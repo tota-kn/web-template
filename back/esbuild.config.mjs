@@ -15,7 +15,7 @@ const createConfig = () => {
     return {
         entryPoints: ['src/handlers/**/*.ts'],
         outdir: 'dist',
-        outbase: 'src',
+        outbase: 'src/handlers',
         format: 'esm',
         platform: 'node',
         bundle: true,

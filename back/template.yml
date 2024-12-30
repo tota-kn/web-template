@@ -5,7 +5,7 @@ Description: web-template-back
 Parameters:
   Stage:
     Type: String
-    AllowValues: [local, dev, prod]
+    AllowedValues: [local, dev, prod]
     Default: local
 
 Mappings:
@@ -29,13 +29,13 @@ Globals:
 
 Resources:
   # S3
-  WebTemplateFrontBucket:
-    Type: AWS::S3::Bucket
-    Properties:
-      BucketName: !Sub "tota-web-template-front-${Stage}"
-      Tags:
-        id: "web-template-front"
-        Stage: !Ref Stage
+  # WebTemplateFrontBucket:
+  #   Type: AWS::S3::Bucket
+  #   Properties:
+  #     BucketName: !Sub "tota-web-template-front-${Stage}"
+  #     Tags:
+  #       id: "web-template-front"
+  #       Stage: !Ref Stage
 
   # API Gateway
   WebTemplateBackApi:
@@ -51,7 +51,7 @@ Resources:
         Fn::TransForm:
           Name: "AWS::Include"
           Parameters:
-            Location: "../openapi.yml"
+            Location: "openapi.yml"
       Cors:
         AllowOrigin: !Join ["", ["'", "*", "'"]]
         AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
