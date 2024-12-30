@@ -1,11 +1,11 @@
-import { APIGatewayEvent, Handler } from 'aws-lambda';
+import { APIGatewayEvent, APIGatewayProxyResult, Handler } from 'aws-lambda';
 
-export const handler: Handler = async (event: APIGatewayEvent) => {
+export const handler: Handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
+    console.log('Hello from the back!!!');
     return {
         statusCode: 200,
         body: JSON.stringify({
-            message: 'Hello from the back!!!',
-            event,
+            message: 'Hello from the back!!!'
         }),
     };
 }

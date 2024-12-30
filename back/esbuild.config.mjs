@@ -17,6 +17,7 @@ const createConfig = () => {
         outdir: 'dist',
         outbase: 'src/handlers',
         format: 'esm',
+        outExtension: { '.js': '.mjs' },
         platform: 'node',
         bundle: true,
         minify: isProduction,
@@ -39,4 +40,4 @@ if (process.argv.includes('--build')) {
     await build(config);
 } else if (process.argv.includes('--watch')) {
     await watch(config);
-}
+} 
