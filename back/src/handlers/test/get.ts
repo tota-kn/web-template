@@ -5,7 +5,7 @@ export const handler: Handler = async (event: APIGatewayEvent): Promise<APIGatew
     return {
         statusCode: 200,
         body: JSON.stringify({
-            message: 'Hello from the back!!!'
+            message: 'Hello from the back!'
         }),
     };
 }
