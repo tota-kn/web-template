@@ -15,6 +15,9 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
 
+  // Prettier併用設定
+  eslintConfigPrettier,
+
   /** 対象ファイルの設定 */
   {
     files: ["**/*.{js,ts,mjs,mts,cjs,cts,jsx,tsx}"],
@@ -35,6 +38,10 @@ export default tseslint.config(
     },
   },
 
-  // Prettier併用設定
-  eslintConfigPrettier,
+  /** ルール設定 */
+  {
+    rules: {
+      "@typescript-eslint/no-namespace": "off",
+    },
+  },
 );

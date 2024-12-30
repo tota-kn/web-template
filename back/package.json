@@ -6,10 +6,13 @@
     "lint": "eslint **/*.{js,ts,mjs} --fix && prettier '**/*.{js,ts,mjs}' --write",
     "test": "vitest run --coverage",
     "build": "rm -rf ./dist && node esbuild.config.mjs --build",
-    "watch": "rm -rf ./dist && node esbuild.config.mjs --watch",
-    "sam-local": "sam local start-api --port 3000",
+    "dev": "pnpm run dev:build && pnpm run dev:sam && pnpm run dev:test",
+    "dev:build": "rm -rf ./dist && node esbuild.config.mjs --watch",
+    "dev:sam": "sam local start-api --port 3000",
+    "dev:test": "vitest watch",
     "deploy:dev": "sam deploy --config-env dev",
-    "deploy:prod": "sam deploy --config-env prod"
+    "deploy:prod": "sam deploy --config-env prod",
+    "generate:openapi": ""
   },
   "keywords": [],
   "author": "",
