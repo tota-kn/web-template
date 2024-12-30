@@ -29,7 +29,7 @@ export default tseslint.config(
         ...globals.node, // processの定義
       },
       parserOptions: {
-        ecmaVersion: "ES2024",
+        ecmaVersion: "ES2022",
         sourceType: "module",
       },
     },
