@@ -1,6 +1,7 @@
 #!/bin/bash
 
 WORKING_DIRECTORY=`dirname $0`
+STAGE=dev
 
 # aws cloudformation validate-template \
 #     --template-body "${WORKING_DIRECTORY}/template.yml" && \
@@ -12,4 +13,5 @@ aws cloudformation package \
 aws cloudformation deploy \
     --stack-name  web-template-test4 \
     --template-file /home/yt/repos/web-template/back/dist/wev-temmplate.dev \
-    --parameter-overrides Stage=dev
+    --parameter-overrides Stage=dev \
+    --capabilities CAPABILITY_IAM
