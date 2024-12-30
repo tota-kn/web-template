@@ -1,17 +1,18 @@
 #!/bin/bash
 
 WORKING_DIRECTORY=`dirname $0`
+S3_OUTPUT_TEMPLATE=aws-sam-cli-managed-default-samclisourcebucket-pc9rxjxha1vt 
 STAGE=dev
 
 # aws cloudformation validate-template \
 #     --template-body "${WORKING_DIRECTORY}/template.yml" && \
 aws cloudformation package \
-    --template-file template.yml \
-    --s3-bucket "iwato-cfn-deploy" \
-    --s3-prefix web-template/dev \
-    --output-template-file "dist/wev-temmplate.dev" && \
+    --template-file ${WORKING_DIRECTORY}/template.yml \
+    --s3-bucket ${S3_OUTPUT_TEMPLATE} \
+    --s3-prefix web-template/${STAGE} \
+    --output-template-file "${WORKING_DIRECTORY}/dist/web-temmplate.${STAGE}" && \
 aws cloudformation deploy \
-    --stack-name  web-template-test4 \
-    --template-file /home/yt/repos/web-template/back/dist/wev-temmplate.dev \
-    --parameter-overrides Stage=dev \
+    --stack-name  web-template-${STAGE} \
+    --template-file ${WORKING_DIRECTORY}/dist/web-temmplate.${STAGE} \
+    --parameter-overrides Stage=${STAGE} \
     --capabilities CAPABILITY_IAM
