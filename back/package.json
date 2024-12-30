@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf ./dist && node esbuild.config.mjs --build",
     "watch": "rm -rf ./dist && node esbuild.config.mjs --watch",
-    "sam-local": "sam local start-api --port 3000"
+    "sam-local": "sam local start-api --port 3000",
+    "deploy:dev": "sam deploy --config-env dev",
+    "deploy:prod": "sam deploy --config-env prod"
   },
   "keywords": [],
   "author": "",
