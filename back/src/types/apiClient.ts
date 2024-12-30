@@ -46,7 +46,7 @@ export interface operations {
     testGet: {
         parameters: {
             query?: {
-                n?: string;
+                n?: number;
             };
             header?: never;
             path?: never;
