@@ -1,35 +1,34 @@
 import { APIGatewayEvent, APIGatewayProxyResult, Handler } from "aws-lambda";
 import { paths } from "../../types/apiClient";
+import { ValidationError } from "../../utils/error";
+import { buildErrorResult, buildResult } from "../../utils/lambda";
 
 export const handler: Handler = async (
   event: APIGatewayEvent,
 ): Promise<APIGatewayProxyResult> => {
-  const request = parseRequest(event);
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
+  try {
+    const request = parseRequest(event);
+    return buildResult(200, {
       message: "Hello from the back!!!",
       request: request,
-    }),
-  };
+    });
+  } catch (e: unknown) {
+    return buildErrorResult(e);
+  }
 };
 
 const parseRequest = (
   event: APIGatewayEvent,
 ): paths["/test"]["get"]["parameters"] => {
-  try {
-    const query = event.queryStringParameters;
-    const n = Number(query?.n);
-    return {
-      query: {
-        n: n,
-      },
-    };
-  } catch (e: unknown) {
-    if (e instanceof Error) {
-      throw new Error("n must be a number");
-    } else {
-      throw new Error("Unknown error");
-    }
+  const query = event.queryStringParameters;
+  const n = Number(query?.n);
+  if (isNaN(n)) {
+    throw new ValidationError("n must be a number");
   }
+
+  return {
+    query: {
+      n: n,
+    },
+  };
 };
