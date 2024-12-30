@@ -47,6 +47,7 @@ Resources:
     Properties:
       Name: !Sub "web-template-back-${Stage}"
       StageName: !Ref Stage
+      OpenApiVersion: "3.0.3"
       EndpointConfiguration:
         Type: REGIONAL
       Tags:

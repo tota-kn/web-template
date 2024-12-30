@@ -2,6 +2,9 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "vitest.explorer"
+    "vitest.explorer",
+    "42crunch.vscode-openapi",
+    "amazonwebservices.aws-toolkit-vscode",
+    "aws-scripting-guy.cform"
   ]
 }
