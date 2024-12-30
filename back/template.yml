@@ -22,10 +22,14 @@ Globals:
     Timeout: 5
     MemorySize: 128
     Runtime: nodejs20.x
-    Architecture: arm64
+    Architectures:
+      - arm64
     Environment:
       Variables:
         STAGE: !Ref Stage
+    Tags:
+      id: "web-template-back"
+      Stage: !Ref Stage
 
 Resources:
   # S3
@@ -43,12 +47,13 @@ Resources:
     Properties:
       Name: !Sub "web-template-back-${Stage}"
       StageName: !Ref Stage
-      EndpointConfiguration: REGIONAL
+      EndpointConfiguration:
+        Type: REGIONAL
       Tags:
         id: "web-template-back"
         Stage: !Ref Stage
       DefinitionBody:
-        Fn::TransForm:
+        Fn::Transform:
           Name: "AWS::Include"
           Parameters:
             Location: "openapi.yml"
@@ -61,13 +66,13 @@ Resources:
   TestFunction:
     Type: AWS::Serverless::Function
     Properties:
+      FunctionName: !Sub "web-template-back-${Stage}-test-get"
       CodeUri: dist/test
       Handler: get.handler
-      Timeout: 3
       Events:
-        WebTemplateBackApi:
+        WebTemplateBackApiEvent:
           Type: Api
           Properties:
-            path: /test
-            method: get
+            Path: /test
+            Method: get
             RestApiId: !Ref WebTemplateBackApi
