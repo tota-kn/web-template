@@ -12,7 +12,7 @@
     "dev:test": "vitest watch",
     "deploy:dev": "sam deploy --config-env dev",
     "deploy:prod": "sam deploy --config-env prod",
-    "generate:openapi": ""
+    "generate:openapi": "pnpx openapi-typescript ./openapi.yml -o src/types/apiClient.ts --enum-values"
   },
   "keywords": [],
   "author": "",
