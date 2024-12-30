@@ -11,11 +11,11 @@ Parameters:
 Mappings:
   StageMap:
     local:
-      frontDomain: web-template-back-local
+      frontDomain: web-template-back_local
     dev:
-      frontDomain: web-template-back-dev
+      frontDomain: web-template-back_dev
     prod:
-      frontDomain: web-template-back-prod
+      frontDomain: web-template-back_prod
 
 Globals:
   Function:
@@ -45,7 +45,7 @@ Resources:
   WebTemplateBackApi:
     Type: AWS::Serverless::Api
     Properties:
-      Name: !Sub "web-template-back-${Stage}"
+      Name: !Sub "web-template-back_${Stage}"
       StageName: !Ref Stage
       OpenApiVersion: "3.0.3"
       EndpointConfiguration:
@@ -67,7 +67,7 @@ Resources:
   TestFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "web-template-back-${Stage}-test-get"
+      FunctionName: !Sub "web-template-back_${Stage}_test-get"
       CodeUri: dist/test
       Handler: get.handler
       Events:

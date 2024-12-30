@@ -14,7 +14,7 @@ s3_prefix = "web-template/dev"
 region = "ap-northeast-1"
 capabilities = "CAPABILITY_NAMED_IAM"
 disable_rollback = false
-parameter_overrides = ["STAGE=dev"]
+parameter_overrides = ["Stage=dev"]
 
 [prod.deploy.parameters]
 stack_name = "web-template-prod"
@@ -23,4 +23,4 @@ s3_prefix = "web-template/prod"
 region = "ap-northeast-1"
 capabilities = "CAPABILITY_NAMED_IAM"
 disable_rollback = false
-parameter_overrides = ["STAGE=prod"]
+parameter_overrides = ["Stage=prod"]
