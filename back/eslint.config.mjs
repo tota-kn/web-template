@@ -41,8 +41,6 @@ export default tseslint.config(
 
   /** ルール設定 */
   {
-    rules: {
-      "@typescript-eslint/no-namespace": "off",
-    },
+    rules: {},
   },
 );

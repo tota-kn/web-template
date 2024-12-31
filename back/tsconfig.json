@@ -1,8 +1,10 @@
-{
+{ 
   "compilerOptions": {
+    // https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping
     "target": "ES2023",
     "module": "node16",
     "lib": ["ES2023"],
+
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
