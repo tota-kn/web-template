@@ -33,13 +33,10 @@ Globals:
 
 Resources:
   # S3
-  # WebTemplateFrontBucket:
-  #   Type: AWS::S3::Bucket
-  #   Properties:
-  #     BucketName: !Sub "tota-web-template-front-${Stage}"
-  #     Tags:
-  #       id: "web-template-front"
-  #       Stage: !Ref Stage
+  WebTemplateFrontBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "tota-web-template-front-${Stage}"
 
   # API Gateway
   WebTemplateBackApi:
@@ -74,6 +71,6 @@ Resources:
         WebTemplateBackApiEvent:
           Type: Api
           Properties:
-            Path: /test
+            Path: /api/test
             Method: get
             RestApiId: !Ref WebTemplateBackApi

@@ -10,7 +10,7 @@ parameter_overrides = "Stage=local"
 debug = true
 stack_name = "web-template-dev"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-pc9rxjxha1vt"
-s3_prefix = "web-template/dev"
+s3_prefix = "deploy/web-template/dev"
 region = "ap-northeast-1"
 capabilities = "CAPABILITY_NAMED_IAM"
 disable_rollback = false

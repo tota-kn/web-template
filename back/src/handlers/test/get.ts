@@ -19,7 +19,7 @@ export const handler: Handler = async (
 
 const parseRequest = (
   event: APIGatewayEvent,
-): paths["/test"]["get"]["parameters"] => {
+): paths["/api/test"]["get"]["parameters"] => {
   const query = event.queryStringParameters;
   const n = Number(query?.n);
   if (isNaN(n)) {

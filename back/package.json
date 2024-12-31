@@ -7,9 +7,10 @@
     "test": "vitest run --coverage",
     "build": "rm -rf ./dist && node esbuild.config.mjs --build",
     "dev": "pnpm run dev:build && pnpm run dev:sam && pnpm run dev:test",
-    "dev:build": "rm -rf ./dist && node esbuild.config.mjs --watch",
+    "dev:esbuild": "rm -rf ./dist && node esbuild.config.mjs --watch",
     "dev:sam": "sam local start-api --port 3000",
     "dev:test": "vitest watch",
+    "dev:tsc": "tsc --noemit --watch",
     "deploy:dev": "sam deploy --config-env dev",
     "deploy:prod": "sam deploy --config-env prod",
     "generate:openapi": "pnpx openapi-typescript ./openapi.yml -o src/types/apiClient.ts --enum-values"

@@ -5,7 +5,7 @@ info:
   description: web-template-back
 
 paths:
-  /test:
+  /api/test:
     get:
       summary: Test function
       description: Test function
