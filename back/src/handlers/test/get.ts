@@ -11,7 +11,8 @@ export const handler: Handler = async (
     return buildResult(200, {
       message: "Hello from the back!!!",
       request: request,
-    });
+    env: process.env.FRONT_BASE_URL ?? "none",
+  });
   } catch (e: unknown) {
     return buildErrorResult(e);
   }

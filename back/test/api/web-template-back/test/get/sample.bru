@@ -13,3 +13,9 @@ get {
 params:query {
   n: 12345
 }
+
+tests {
+  test("should be able to login", function() {
+      expect(res.status).to.equal(200);
+  });
+}

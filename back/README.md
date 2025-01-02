@@ -1,2 +1,14 @@
- - AWS SAMを利用したデプロイ
- - 環境変数の設定
+- IaaS CloudFormation
+- 環境変数の設定
+- リンター  ESLint(Flat config)
+- フォーマッター Prettier
+- テスト
+  - ユニットテスト vitest
+    - カバレッジ @vitest/coverage-v8  
+  - APIテスト Bruno
+- OpenAPIからの型自動生成 openapi-typescript
+- CORS対応
+- ローカル開発
+  - ホットリロード esbuild
+  - AWS再現 sam(+samconfig)
+    - ローカルDynamoDB, S3環境 → まだ

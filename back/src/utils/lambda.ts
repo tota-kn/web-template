@@ -8,9 +8,9 @@ export const buildResult = (
 ): APIGatewayProxyResult => {
   return {
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "'*",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PuT,DELETE",
+      "Access-Control-Allow-Origin": `'${process.env.FRONTEND_URL}'`,
+      "Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+      "Access-Control-Allow-Methods": "'OPTIONS,POST,GET,PuT,DELETE'",
       ...headers,
     },
     statusCode: status,
