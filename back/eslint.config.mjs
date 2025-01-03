@@ -21,6 +21,8 @@ export default tseslint.config(
   /** 対象ファイルの設定 */
   {
     files: ["**/*.{js,ts,mjs,mts,cjs,cts,jsx,tsx}"],
+  },
+  {
     ignores: ["src/types/apiClient.ts"],
   },
   includeIgnoreFile(gitignorePath),

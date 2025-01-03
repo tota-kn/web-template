@@ -1,8 +1,9 @@
-import { APIGatewayProxyResult } from "aws-lambda";
+import { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
+import { ApiRequest } from "../types/lambda";
 import { StatusError } from "./error";
 import { logger } from "./log";
 
-export const buildResult = (
+const buildResult = (
   status: number,
   body: Record<string, unknown>,
   headers?: Record<string, string>,
@@ -20,7 +21,7 @@ export const buildResult = (
   };
 };
 
-export const buildErrorResult = (error: unknown): APIGatewayProxyResult => {
+const buildErrorResult = (error: unknown): APIGatewayProxyResult => {
   if (error instanceof StatusError) {
     logger.error(error.message, error);
     return buildResult(error.status, { message: error.message });
@@ -29,5 +30,27 @@ export const buildErrorResult = (error: unknown): APIGatewayProxyResult => {
     return buildResult(500, { message: error.message });
   } else {
     return buildResult(500, { message: "Unknown error" });
+  }
+};
+
+const extractRequest = (event: APIGatewayEvent): ApiRequest => {
+  return {
+    path: event.pathParameters || {},
+    query: event.queryStringParameters || {},
+    header: event.headers || {},
+    body: JSON.parse(event.body || "{}"),
+  };
+};
+
+export const executeLambda = async (
+  event: APIGatewayEvent,
+  fucntion: (request: ApiRequest) => Record<string, unknown>,
+): Promise<APIGatewayProxyResult> => {
+  try {
+    const request = extractRequest(event);
+    const result = fucntion(request);
+    return buildResult(200, result);
+  } catch (e: unknown) {
+    return buildErrorResult(e);
   }
 };

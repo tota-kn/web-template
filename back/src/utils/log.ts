@@ -10,7 +10,7 @@ class Logger {
         winston.format.errors({ stack: true }), // エラースタックを表示
         winston.format.timestamp({ format: "YYYY-MM-DDTHH:mm:ss" }), // タイムスタンプフォーマット
         winston.format.printf(({ level, message, timestamp, stack }) => {
-          return `[${level}]：${timestamp} ${message}${stack ? `\n${stack}` : ''}`; // フォーマット
+          return `[${level}]：${timestamp} ${message}${stack ? `\n${stack}` : ""}`; // フォーマット
         }),
       ),
       defaultMeta: {},
