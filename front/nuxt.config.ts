@@ -1,11 +1,26 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from 'nuxt/config';
+
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  modules: ['nitro-cloudflare-dev',
+    '@nuxt/eslint'],
   devtools: { enabled: true },
-
-  nitro: {
-    preset: "cloudflare-pages"
+  runtimeConfig: {
+    public: {
+      API_BASE_URL: '',
+      TITLE: 'Web Template Front',
+    },
   },
-
-  modules: ["nitro-cloudflare-dev"]
-})
+  compatibilityDate: '2024-11-01',
+  nitro: {
+    preset: 'cloudflare-pages',
+  },
+  eslint: {
+    config: {
+      stylistic: {
+        indent: 2,
+        semi: true,
+        quotes: 'double',
+      },
+    },
+  },
+});
