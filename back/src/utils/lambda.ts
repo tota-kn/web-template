@@ -1,4 +1,5 @@
 import { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
+import { ZodError } from "zod";
 import { ApiRequest } from "../types/lambda";
 import { StatusError } from "./error";
 import { logger } from "./log";
@@ -25,6 +26,8 @@ const buildErrorResult = (error: unknown): APIGatewayProxyResult => {
   if (error instanceof StatusError) {
     logger.error(error.message, error);
     return buildResult(error.status, { message: error.message });
+  } else if (error instanceof ZodError) {
+    return buildResult(400, { message: error.flatten().fieldErrors });
   } else if (error instanceof Error) {
     logger.error(error.message, error);
     return buildResult(500, { message: error.message });
