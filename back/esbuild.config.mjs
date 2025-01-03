@@ -32,6 +32,11 @@ const createConfig = () => {
         },
       },
     ],
+    banner: {
+      // commonjs用ライブラリをESMプロジェクトでbundleする際に生じることのある問題への対策
+      // https://zenn.dev/junkor/articles/2bcd22ca08d21d#esbuild%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3
+      js: 'import { createRequire } from "module"; import url from "url"; const require = createRequire(import.meta.url); const __filename = url.fileURLToPath(import.meta.url); const __dirname = url.fileURLToPath(new URL(".", import.meta.url));',
+    },
   };
 };
 

@@ -12,3 +12,4 @@
   - ホットリロード esbuild
   - AWS再現 sam(+samconfig)
     - ローカルDynamoDB, S3環境 → まだ
+- LogLevel winston

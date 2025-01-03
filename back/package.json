@@ -6,16 +6,16 @@
     "lint": "eslint **/*.{js,ts,mjs} --fix && prettier '**/*.{js,ts,mjs}' --write",
     "test": "vitest run --coverage",
     "generate:openapi": "pnpx openapi-typescript ./openapi.yml -o src/types/apiClient.ts --enum-values",
-    
+
     "dev": "sh dev.sh",
     "dev:esbuild": "node esbuild.config.mjs --watch",
     "dev:sam": "sam local start-api --port 3000",
     "dev:test": "vitest watch",
     "dev:tsc": "tsc --noemit --watch",
 
-    "build": "rm -rf ./dist && tsc --noemit && node esbuild.config.mjs --build",    
+    "build": "rm -rf ./dist && tsc --noemit && node esbuild.config.mjs --build",
     "deploy:dev": "pnpm run build  && sam deploy --config-env dev",
-    "deploy:prod": "pnpm run build && sam deploy --config-env prod"    
+    "deploy:prod": "pnpm run build && sam deploy --config-env prod"
   },
   "keywords": [],
   "author": "",
@@ -35,5 +35,8 @@
     "typescript-eslint": "^8.18.2",
     "vitest": "^2.1.8"
   },
-  "packageManager": "pnpm@9.15.1"
+  "packageManager": "pnpm@9.15.1",
+  "dependencies": {
+    "winston": "^3.17.0"
+  }
 }

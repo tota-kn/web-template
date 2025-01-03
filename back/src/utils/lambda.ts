@@ -1,5 +1,6 @@
 import { APIGatewayProxyResult } from "aws-lambda";
 import { StatusError } from "./error";
+import { logger } from "./log";
 
 export const buildResult = (
   status: number,
@@ -9,7 +10,8 @@ export const buildResult = (
   return {
     headers: {
       "Access-Control-Allow-Origin": `'${process.env.FRONTEND_URL}'`,
-      "Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+      "Access-Control-Allow-Headers":
+        "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
       "Access-Control-Allow-Methods": "'OPTIONS,POST,GET,PuT,DELETE'",
       ...headers,
     },
@@ -20,8 +22,10 @@ export const buildResult = (
 
 export const buildErrorResult = (error: unknown): APIGatewayProxyResult => {
   if (error instanceof StatusError) {
+    logger.error(error.message, error);
     return buildResult(error.status, { message: error.message });
   } else if (error instanceof Error) {
+    logger.error(error.message, error);
     return buildResult(500, { message: error.message });
   } else {
     return buildResult(500, { message: "Unknown error" });

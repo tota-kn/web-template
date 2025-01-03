@@ -12,10 +12,13 @@ Mappings:
   StageMap:
     local:
       frontBaseUrl: web-template-back_local
+      loggerLevel: debug
     dev:
       frontBaseUrl: web-template-back_dev
+      loggerLevel: info
     prod:
       frontBaseUrl: web-template-back_prod
+      loggerLevel: error
 
 Globals:
   Function:
@@ -28,6 +31,7 @@ Globals:
       Variables:
         STAGE: !Ref Stage
         FRONT_BASE_URL: !FindInMap [StageMap, !Ref Stage, frontBaseUrl]
+        LOGGER_LEVEL: !FindInMap [StageMap, !Ref Stage, loggerLevel]
     Tags:
       id: "web-template-back"
       Stage: !Ref Stage
