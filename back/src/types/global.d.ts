@@ -2,8 +2,8 @@ import { LoggerLevel } from "./log";
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    Stage?: "local" | "dev" | "prod";
-    FRONT_BASE_URL: string;
-    LOGGER_LEVEL: LoggerLevel;
+    readonly STAGE?: "local" | "dev" | "prod";
+    readonly FRONT_BASE_URL: string;
+    readonly LOGGER_LEVEL: LoggerLevel;
   }
 }
