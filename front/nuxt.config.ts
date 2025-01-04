@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxt/test-utils/module",
     "@pinia/nuxt",
+    "@nuxtjs/i18n",
   ],
   devtools: { enabled: true },
   runtimeConfig: {
@@ -28,6 +29,12 @@ export default defineNuxtConfig({
         quotes: "double",
       },
     },
+  },
+  i18n: {
+    strategy: "prefix_and_default",
+    locales: ["en", "ja"],
+    defaultLocale: "en",
+    vueI18n: "./i18n.config.ts",
   },
   shadcn: {
     prefix: "",

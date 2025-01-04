@@ -1,13 +1,13 @@
-- リンター eslint
-- フォーマッター eslint 
-- テスト
-  - ユニットテスト
-  - コンポーネントテスト
-  - E2Eテスト
-- Storybokok
-- ホットリロード Nuxt標準
-- openapi-typescript
-- Loglevel
-- 多言語対応
-- 状態管理 Pinia
-- テーマカラー（ダークモード）
+- [x] リンター: eslint
+- [x] フォーマッター: eslint stylistic
+- [ ] テスト
+  - [x] ユニットテスト
+  - [ ] コンポーネントテスト
+  - [ ] E2Eテスト
+- [ ] Storybokok
+- [x] ホットリロード Nuxt標準
+- [ ] openapi-typescript
+- [ ] Loglevel
+- [x] 多言語対応
+- [x] 状態管理 Pinia
+- [x] テーマカラー（ダークモード）
