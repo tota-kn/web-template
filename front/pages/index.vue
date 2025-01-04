@@ -1,19 +1,16 @@
 <script setup lang="ts">
+import type { AsyncData } from "#app";
 import type { paths } from "~/types/apiClient";
 
-const apiResult = ref<{
-  data: paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"] | undefined;
-  error: Error | undefined;
-  status: string | undefined;
-}>({
-  data: undefined,
-  error: undefined,
-  status: "no-data",
-});
+const testGetClient: Ref<
+  AsyncData<paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"] | null,
+  Error | null> | undefined>
+ = ref(undefined);
 
-onMounted(async () => {
-  apiResult.value = await apiClient.testGet({ query: { n: 1 } });
-});
+const fetch = () => {
+  const a = new ApiClient("http://localhost:3000/api");
+  testGetClient.value = a.testGet({ query: { n: 1 } });
+};
 </script>
 
 <template>
@@ -26,7 +23,18 @@ onMounted(async () => {
     </div>
     <I18nWord />
     <div>
-      {{ apiResult }}
+      <Button @click="fetch()">
+        fetch
+      </Button>
+      <div>
+        {{ testGetClient?.status.value ?? "no-status" }}
+      </div>
+      <div>
+        {{ testGetClient?.data.value ?? "no-data" }}
+      </div>
+      <div>
+        {{ testGetClient?.error.value ?? "no-error" }}
+      </div>
     </div>
   </div>
 </template>

@@ -60,7 +60,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": {
+                        message?: string;
+                    };
                 };
             };
             /** @description Error Response */

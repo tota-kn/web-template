@@ -1,34 +1,32 @@
 import type { paths } from "~/types/apiClient";
 
-type fetchOptions = {
-  method: "get" | "post" | "put" | "delete";
-  headers?: Record<string, string>;
-  query?: Record<string, number | string | boolean>;
-  body?: Record<string, unknown>;
-};
+// type FetchOptions = {
+//   method: "GET" | "POST" | "PUT" | "DELETE";
+//   headers?: Record<string, string>;
+//   query?: Record<string, number | string | boolean>;
+//   body?: Record<string, unknown>;
+// };
 
-class ApiClient {
+export class ApiClient {
   baseUrl: string;
+  data: Ref<paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"] | null>;
+  status: Ref<string>;
+  error: Ref<Error | null>;
 
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
+    this.data = ref(null);
+    this.status = ref("yet");
+    this.error = ref(null);
   }
 
-  private async fetch<Response, Error>(path: string, options: fetchOptions) {
-    const { data, error, status } = await useFetch(`${this.baseUrl}/${path}`, options);
-    return {
-      data: data.value as Response,
-      error: error.value as Error,
-      status: status.value as string,
-    };
-  }
-
-  async testGet(request: paths["/api/test"]["get"]["parameters"]) {
-    return await this.fetch<paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"], Error>("test", {
-      method: "get",
-      query: request.query,
-    });
+  testGet(request: paths["/api/test"]["get"]["parameters"]) {
+    return useFetch<paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"], Error>(
+      `${this.baseUrl}/test`,
+      {
+        method: "GET",
+        query: request.query,
+      },
+    );
   }
 }
-
-export const apiClient = new ApiClient("http://localhost:3000/api");

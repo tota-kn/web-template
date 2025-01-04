@@ -10,7 +10,7 @@ export const handler: Handler = async (
 };
 
 const execute = async (request: ApiRequest) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   const parsedRequest = new TestGetRequest(request);
   return {
     message: "Hello from the back!!!",
