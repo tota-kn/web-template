@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3";
 import StoreCountButton from "~/components/StoreCountButton.vue";
 
 const meta = {
-  title: "Components",
+  title: "StoreCountButton",
   component: StoreCountButton,
   tags: ["autodocs"],
 
