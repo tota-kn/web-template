@@ -2,9 +2,10 @@
 - フォーマッター eslint 
 - テスト
   - ユニットテスト
+  - コンポーネントテスト
   - E2Eテスト
 - Storybokok
-- ホットリロード
+- ホットリロード Nuxt標準
 - openapi-typescript
 - Loglevel
 - 多言語対応

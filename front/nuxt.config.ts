@@ -6,6 +6,8 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
+    "@nuxt/test-utils/module",
+    "@pinia/nuxt",
   ],
   devtools: { enabled: true },
   runtimeConfig: {
