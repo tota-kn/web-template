@@ -1,8 +1,12 @@
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-  modules: ["nitro-cloudflare-dev",
-    "@nuxt/eslint"],
+  modules: [
+    "nitro-cloudflare-dev",
+    "@nuxt/eslint",
+    "@nuxtjs/tailwindcss",
+    "shadcn-nuxt",
+  ],
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
@@ -22,5 +26,9 @@ export default defineNuxtConfig({
         quotes: "double",
       },
     },
+  },
+  shadcn: {
+    prefix: "",
+    componentDir: "./components/ui",
   },
 });
