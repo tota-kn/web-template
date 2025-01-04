@@ -29,3 +29,4 @@ logs
 
 coverage
 libs/utils.ts
+storybook-static

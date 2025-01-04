@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     "@nuxt/test-utils/module",
     "@pinia/nuxt",
     "@nuxtjs/i18n",
-    "@nuxtjs/storybook",
   ],
   devtools: { enabled: true },
   runtimeConfig: {
@@ -40,8 +39,5 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: "",
     componentDir: "./components/ui",
-  },
-  storybook: {
-    port: 6006,
   },
 });
