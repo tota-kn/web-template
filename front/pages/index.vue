@@ -1,6 +1,10 @@
 <template>
   <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <NuxtLink to="/test">
+      Go to test
+    </NuxtLink>
+    <div>
+      <StoreCountButton />
+    </div>
   </div>
 </template>
