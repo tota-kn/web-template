@@ -28,3 +28,4 @@ logs
 .dev.vars
 
 coverage
+libs/utils.ts
