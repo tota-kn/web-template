@@ -8,6 +8,6 @@ const add = () => store.add();
 
 <template>
   <Button @click="add()">
-    {{ store.count }}
+    StoreCount: {{ store.count }}
   </Button>
 </template>;
