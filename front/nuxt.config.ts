@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/i18n",
   ],
+  ssr: false,
   devtools: { enabled: true },
   runtimeConfig: {
     public: {

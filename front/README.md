@@ -4,10 +4,12 @@
   - [x] ユニットテスト
   - [ ] コンポーネントテスト
   - [ ] E2Eテスト
-- [ ] Storybokok
+- [ ] ~~Storybokok~~
 - [x] ホットリロード Nuxt標準
 - [ ] openapi-typescript
 - [ ] Loglevel
 - [x] 多言語対応
 - [x] 状態管理 Pinia
 - [x] テーマカラー（ダークモード）
+- [ ] API状態管理
+

@@ -5,14 +5,15 @@
   "scripts": {
     "test": "vitest run --coverage",
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev -p 3001",
     "generate": "nuxt generate",
     "preview": "pnpm run build && wrangler pages dev",
     "postinstall": "nuxt prepare",
     "deploy:dev": "pnpm run build && wrangler pages deploy --project-name web-template-front-dev",
     "deploy:prod": "pnpm run build && wrangler pages deploy --project-name web-template-front-prod",
     "cf-typegen": "wrangler types",
-    "lint": "eslint --fix"
+    "lint": "eslint --fix",
+    "generate:openapi": "pnpx openapi-typescript ./../back/openapi.yml -o types/apiClient.ts --enum-values"
   },
   "dependencies": {
     "@nuxt/eslint": "^0.7.4",

@@ -7,6 +7,7 @@ export default withNuxt(
       ignores: [
         "components/ui/",
         "lib/**/*.ts",
+        "types/apiClient.ts",
       ],
     },
     {

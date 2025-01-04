@@ -47,11 +47,11 @@ const extractRequest = (event: APIGatewayEvent): ApiRequest => {
 
 export const executeLambda = async (
   event: APIGatewayEvent,
-  fucntion: (request: ApiRequest) => Record<string, unknown>,
+  fucntion: (request: ApiRequest) => Promise<Record<string, unknown>>,
 ): Promise<APIGatewayProxyResult> => {
   try {
     const request = extractRequest(event);
-    const result = fucntion(request);
+    const result = await fucntion(request);
     return buildResult(200, result);
   } catch (e: unknown) {
     return buildErrorResult(e);

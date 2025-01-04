@@ -1,6 +1,19 @@
 <script setup lang="ts">
-// import I18nWord from "~/components/I18nWord.vue";
-// import StoreCountButton from "~/components/StoreCountButton.vue";
+import type { paths } from "~/types/apiClient";
+
+const apiResult = ref<{
+  data: paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"] | undefined;
+  error: Error | undefined;
+  status: string | undefined;
+}>({
+  data: undefined,
+  error: undefined,
+  status: "no-data",
+});
+
+onMounted(async () => {
+  apiResult.value = await apiClient.testGet({ query: { n: 1 } });
+});
 </script>
 
 <template>
@@ -12,5 +25,8 @@
       <StoreCountButton />
     </div>
     <I18nWord />
+    <div>
+      {{ apiResult }}
+    </div>
   </div>
 </template>

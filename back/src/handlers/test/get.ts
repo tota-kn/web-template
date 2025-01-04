@@ -9,7 +9,8 @@ export const handler: Handler = async (
   return await executeLambda(event, execute);
 };
 
-const execute = (request: ApiRequest) => {
+const execute = async (request: ApiRequest) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   const parsedRequest = new TestGetRequest(request);
   return {
     message: "Hello from the back!!!",

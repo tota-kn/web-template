@@ -11,7 +11,7 @@ Parameters:
 Mappings:
   StageMap:
     local:
-      frontBaseUrl: web-template-back_local
+      frontBaseUrl: http://localhost:3001
       loggerLevel: debug
     dev:
       frontBaseUrl: web-template-back_dev
@@ -55,7 +55,11 @@ Resources:
           Parameters:
             Location: "openapi.yml"
       Cors:
-        AllowOrigin: !Join ["", ["'", !FindInMap [StageMap, !Ref Stage, frontBaseUrl], "'"]]
+        AllowOrigin:
+          !Join [
+            "",
+            ["'", !FindInMap [StageMap, !Ref Stage, frontBaseUrl], "'"],
+          ]
         AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
         AllowMethods: "'OPTIONS,POST,GET,PUT,DELETE'"
 

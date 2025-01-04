@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Button from "~/components/ui/button/Button.vue";
-import { useStore } from "~/composables/store/store";
+import { useStore } from "~/composables/store";
 
 const props = defineProps<{
   a?: string;
