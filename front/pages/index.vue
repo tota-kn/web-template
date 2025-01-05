@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const result = fetchTestGet({ query: { n: 123 } });
-
-let eventResult: AsyncData<>;
+const testGet = ApiClient.useTestGet();
 const fetch = () => {
-  eventResult = fetchTestGet({ query: { n: 123 } });
+  testGet.fetch("api/test", "get", { query: { n: 1 } });
 };
 </script>
 
@@ -17,17 +15,12 @@ const fetch = () => {
     </div>
     <I18nWord />
     <div>
-      {{ result.data }}
-      {{ result.status }}
-      {{ result.error }}
-    </div>
-    <div>
       <Button @click="fetch">
         Fetch
       </Button>
-      {{ eventResult?.data }}
-      {{ eventResult?.status }}
-      {{ eventResult?.error }}
+      {{ testGet.data.value ?? "no-data" }}
+      {{ testGet.status.value ?? "no-status" }}
+      {{ testGet.error.value ?? "no-error" }}
     </div>
   </div>
 </template>
