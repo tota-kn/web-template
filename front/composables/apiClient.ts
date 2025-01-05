@@ -1,32 +1,42 @@
 import type { paths } from "~/types/apiClient";
 
-// type FetchOptions = {
-//   method: "GET" | "POST" | "PUT" | "DELETE";
-//   headers?: Record<string, string>;
-//   query?: Record<string, number | string | boolean>;
-//   body?: Record<string, unknown>;
-// };
+type IRequest = {
+  query?: Record<string, string | number>;
+  headers?: Record<string, string>;
+  body?: Record<string, unknown>;
+};
 
-export class ApiClient {
+export class ApiClient<Request extends IRequest, Response> {
   baseUrl: string;
-  data: Ref<paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"] | null>;
-  status: Ref<string>;
-  error: Ref<Error | null>;
 
-  constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
-    this.data = ref(null);
-    this.status = ref("yet");
-    this.error = ref(null);
+  private constructor() {
+    this.baseUrl = "http://localhost:3000/api";
   }
 
-  testGet(request: paths["/api/test"]["get"]["parameters"]) {
-    return useFetch<paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"], Error>(
-      `${this.baseUrl}/test`,
-      {
-        method: "GET",
-        query: request.query,
+  fetch = (path: string, method: string, request: Request) => {
+    return useFetch<Response>(
+      `${this.baseUrl}/${path}`, {
+        ...request,
+        method: method,
       },
     );
+  };
+
+  static useTestGet() {
+    const r = useFetch<paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"], Error>(
+      "/api/test",
+      {
+        method: "GET",
+        query: { n: 1 },
+      },
+    );
+    console.log(r.data.value?.message);
+
+    const client = new ApiClient<
+      paths["/api/test"]["get"]["parameters"],
+      paths["/api/test"]["get"]["responses"]["200"]["content"]["application/json"]
+    >();
+    const rr = client.fetch("/test", "GET", { query: { n: 1 } });
+    console.log(rr.data.value);
   }
 }
