@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       API_BASE_URL: "",
-      TITLE: "Web Template Front",
+      TITLE: "",
     },
   },
   compatibilityDate: "2024-11-01",
