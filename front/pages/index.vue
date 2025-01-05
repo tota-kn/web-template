@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const result = ApiClient.useTestGet();
+const result = fetchTestGet({ query: { n: 123 } });
+
+let eventResult: AsyncData<>;
+const fetch = () => {
+  eventResult = fetchTestGet({ query: { n: 123 } });
+};
 </script>
 
 <template>
@@ -15,6 +20,14 @@ const result = ApiClient.useTestGet();
       {{ result.data }}
       {{ result.status }}
       {{ result.error }}
+    </div>
+    <div>
+      <Button @click="fetch">
+        Fetch
+      </Button>
+      {{ eventResult?.data }}
+      {{ eventResult?.status }}
+      {{ eventResult?.error }}
     </div>
   </div>
 </template>
