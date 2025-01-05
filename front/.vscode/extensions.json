@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "bradlc.vscode-tailwindcss",
-        "dexxiez.shadcn-color-preview"
+        "dexxiez.shadcn-color-preview",
+        "meganrogge.template-string-converter"
     ]
 }
