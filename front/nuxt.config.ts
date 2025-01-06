@@ -22,6 +22,9 @@ export default defineNuxtConfig({
   nitro: {
     preset: "cloudflare-pages",
   },
+  typescript: {
+    typeCheck: true,
+  },
   eslint: {
     config: {
       stylistic: {
